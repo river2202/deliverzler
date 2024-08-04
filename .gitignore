@@ -56,3 +56,5 @@ configs/
 # Ignoring generated files "Avoid for speeding up CI/CD"
 # *.g.dart
 # *.freezed.dart
+
+.fvm

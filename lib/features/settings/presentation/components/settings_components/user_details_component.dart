@@ -1,3 +1,4 @@
+import 'package:deliverzler/features/devTool/dev_menu.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../auth/presentation/providers/auth_state_provider.dart';
@@ -36,9 +37,13 @@ class UserDetailsComponent extends ConsumerWidget {
         const SizedBox(
           height: Sizes.marginV2,
         ),
-        CachedNetworkImageCircular(
-          imageUrl: user.image,
-          radius: Sizes.imageR28,
+        GestureDetector(
+          onDoubleTap: () =>
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const DevMenuPage())),
+          child: CachedNetworkImageCircular(
+            imageUrl: user.image,
+            radius: Sizes.imageR28,
+          ),
         ),
       ],
     );

@@ -16,29 +16,32 @@ class WelcomeComponent extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Flexible(
-              child: Text(
-                tr(context).welcome,
-                style: TextStyles.f20(context).copyWith(
-                  color: Theme.of(context).colorScheme.primary,
+            if (false)
+              Flexible(
+                child: Text(
+                  tr(context).welcome,
+                  style: TextStyles.f20(context).copyWith(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                  textAlign: TextAlign.start,
                 ),
-                textAlign: TextAlign.start,
               ),
-            ),
-            Image.asset(
-              MyAssets.ASSETS_IMAGES_LOGIN_HI_HAND_PNG,
-              height: 44,
-              width: 44,
-              fit: BoxFit.contain,
-            ),
+            if (false)
+              Image.asset(
+                MyAssets.ASSETS_IMAGES_LOGIN_HI_HAND_PNG,
+                height: 44,
+                width: 44,
+                fit: BoxFit.contain,
+              ),
           ],
         ),
         const SizedBox(
-          height: Sizes.marginV12,
+          height: Sizes.marginV12 * 3,
         ),
         Text(
           tr(context).signInToYourAccount,
-          style: TextStyles.f16SemiBold(context).copyWith(color: customColors(context).greyColor),
+          style: TextStyles.f16SemiBold(context)
+              .copyWith(color: customColors(context).greyColor),
         ),
       ],
     );

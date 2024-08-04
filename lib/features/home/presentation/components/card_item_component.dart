@@ -32,6 +32,7 @@ class CardItemComponent extends ConsumerWidget {
     final isUpcomingOrder = order.deliveryStatus == DeliveryStatus.upcoming;
 
     ({bool canProceed, bool isLoading}) fetchOrderAuthority() {
+      //return (canProceed: true, isLoading: false);
       return ref.read(ordersServiceProvider).orderAuthority(
             userId: userId,
             orderDeliveryId: order.deliveryId,
@@ -79,6 +80,8 @@ class CardItemComponent extends ConsumerWidget {
     }
 
     Future<void> deliverOrder() async {
+      // const MapRoute().go(context);
+      // return;
       final authority = fetchOrderAuthority();
 
       switch (authority) {

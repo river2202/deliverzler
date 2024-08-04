@@ -12,20 +12,35 @@ class LoginLogoComponent extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset(
-          MyAssets.ASSETS_IMAGES_CORE_APP_LOGO_PNG,
-          height: 140,
-          width: 140,
-          fit: BoxFit.cover,
+        Container(
+          height: 130,
+          width: 130,
+          decoration: BoxDecoration(
+            color: colorLogoBg,
+            borderRadius: BorderRadius.circular(70),
+          ),
+          child: Center(
+            child: Text(
+              'G',
+              style: TextStyles.f28(context).copyWith(
+                color: const Color(0xFFFFFFFF),
+                fontSize: 70,
+              ),
+            ),
+          ),
         ),
         const SizedBox(
           height: Sizes.marginV12,
         ),
         Text(
-          tr(context).appName,
-          style: TextStyles.f28(context),
+          'ClodFlow',
+          style:
+              TextStyles.f28(context).copyWith(color: const Color(0xFF5D67B4)),
         ),
       ],
     );
   }
 }
+
+const colorLogoBg = Color(0xFF5D67B4);
+const colorButton = Color(0xFF737FD7);

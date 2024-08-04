@@ -7,7 +7,7 @@ part of 'target_location_geo_point_provider.dart';
 // **************************************************************************
 
 String _$targetLocationGeoPointHash() =>
-    r'4f8b2b676dd321fc747362f3ee0292a8f760a04b';
+    r'127f149540f843f2cf88c109b4dc4bb8f98b9271';
 
 /// See also [TargetLocationGeoPoint].
 @ProviderFor(TargetLocationGeoPoint)
@@ -23,4 +23,5 @@ final targetLocationGeoPointProvider = AutoDisposeNotifierProvider<
 );
 
 typedef _$TargetLocationGeoPoint = AutoDisposeNotifier<Option<GeoPoint>>;
-// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

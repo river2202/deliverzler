@@ -4,9 +4,9 @@ class AppColorsLight implements AppColors {
   @override
   Color get primaryColor => const Color(0xffffffff);
   @override
-  Color get primary => const Color(0xFFC11718);
+  Color get primary => const Color(0xFF5D67B4);
   @override
-  Color get secondary => const Color(0xFF4b98db);
+  Color get secondary => const Color(0xFF737FD7);
 
   @override
   Color get statusBarColor => Colors.transparent;

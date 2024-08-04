@@ -6,7 +6,8 @@ part of 'order_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_OrderDto _$$_OrderDtoFromJson(Map<String, dynamic> json) => _$_OrderDto(
+_$OrderDtoImpl _$$OrderDtoImplFromJson(Map<String, dynamic> json) =>
+    _$OrderDtoImpl(
       date: json['date'] as int,
       pickupOption: $enumDecode(_$PickupOptionEnumMap, json['pickupOption']),
       paymentMethod: json['paymentMethod'] as String,
@@ -26,6 +27,24 @@ _$_OrderDto _$$_OrderDtoFromJson(Map<String, dynamic> json) => _$_OrderDto(
           json['deliveryGeoPoint'], const GeoPointConverter().fromJson),
       id: json['id'] as String?,
     );
+
+Map<String, dynamic> _$$OrderDtoImplToJson(_$OrderDtoImpl instance) =>
+    <String, dynamic>{
+      'date': instance.date,
+      'pickupOption': _$PickupOptionEnumMap[instance.pickupOption]!,
+      'paymentMethod': instance.paymentMethod,
+      'addressModel': instance.address?.toJson(),
+      'userId': instance.userId,
+      'userName': instance.userName,
+      'userImage': instance.userImage,
+      'userPhone': instance.userPhone,
+      'userNote': instance.userNote,
+      'employeeCancelNote': instance.employeeCancelNote,
+      'deliveryStatus': _$DeliveryStatusEnumMap[instance.deliveryStatus]!,
+      'deliveryId': instance.deliveryId,
+      'deliveryGeoPoint': _$JsonConverterToJson<GeoPoint, GeoPoint>(
+          instance.deliveryGeoPoint, const GeoPointConverter().toJson),
+    };
 
 const _$PickupOptionEnumMap = {
   PickupOption.delivery: 'delivery',
@@ -47,8 +66,14 @@ Value? _$JsonConverterFromJson<Json, Value>(
 ) =>
     json == null ? null : fromJson(json as Json);
 
-_$_AddressDto _$$_AddressDtoFromJson(Map<String, dynamic> json) =>
-    _$_AddressDto(
+Json? _$JsonConverterToJson<Json, Value>(
+  Value? value,
+  Json? Function(Value value) toJson,
+) =>
+    value == null ? null : toJson(value);
+
+_$AddressDtoImpl _$$AddressDtoImplFromJson(Map<String, dynamic> json) =>
+    _$AddressDtoImpl(
       state: json['state'] as String,
       city: json['city'] as String,
       street: json['street'] as String,
@@ -56,3 +81,13 @@ _$_AddressDto _$$_AddressDtoFromJson(Map<String, dynamic> json) =>
       geoPoint: _$JsonConverterFromJson<GeoPoint, GeoPoint>(
           json['geoPoint'], const GeoPointConverter().fromJson),
     );
+
+Map<String, dynamic> _$$AddressDtoImplToJson(_$AddressDtoImpl instance) =>
+    <String, dynamic>{
+      'state': instance.state,
+      'city': instance.city,
+      'street': instance.street,
+      'mobile': instance.mobile,
+      'geoPoint': _$JsonConverterToJson<GeoPoint, GeoPoint>(
+          instance.geoPoint, const GeoPointConverter().toJson),
+    };

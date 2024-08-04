@@ -48,9 +48,6 @@ class _SystemHash {
   }
 }
 
-typedef GetPlaceAutocompleteRef
-    = AutoDisposeFutureProviderRef<List<PlaceAutocomplete>>;
-
 /// See also [getPlaceAutocomplete].
 @ProviderFor(getPlaceAutocomplete)
 const getPlaceAutocompleteProvider = GetPlaceAutocompleteFamily();
@@ -99,10 +96,10 @@ class GetPlaceAutocompleteProvider
     extends AutoDisposeFutureProvider<List<PlaceAutocomplete>> {
   /// See also [getPlaceAutocomplete].
   GetPlaceAutocompleteProvider(
-    this.autocompleteQuery,
-  ) : super.internal(
+    String autocompleteQuery,
+  ) : this._internal(
           (ref) => getPlaceAutocomplete(
-            ref,
+            ref as GetPlaceAutocompleteRef,
             autocompleteQuery,
           ),
           from: getPlaceAutocompleteProvider,
@@ -114,9 +111,44 @@ class GetPlaceAutocompleteProvider
           dependencies: GetPlaceAutocompleteFamily._dependencies,
           allTransitiveDependencies:
               GetPlaceAutocompleteFamily._allTransitiveDependencies,
+          autocompleteQuery: autocompleteQuery,
         );
 
+  GetPlaceAutocompleteProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.autocompleteQuery,
+  }) : super.internal();
+
   final String autocompleteQuery;
+
+  @override
+  Override overrideWith(
+    FutureOr<List<PlaceAutocomplete>> Function(GetPlaceAutocompleteRef provider)
+        create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: GetPlaceAutocompleteProvider._internal(
+        (ref) => create(ref as GetPlaceAutocompleteRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        autocompleteQuery: autocompleteQuery,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeFutureProviderElement<List<PlaceAutocomplete>> createElement() {
+    return _GetPlaceAutocompleteProviderElement(this);
+  }
 
   @override
   bool operator ==(Object other) {
@@ -131,6 +163,22 @@ class GetPlaceAutocompleteProvider
 
     return _SystemHash.finish(hash);
   }
+}
+
+mixin GetPlaceAutocompleteRef
+    on AutoDisposeFutureProviderRef<List<PlaceAutocomplete>> {
+  /// The parameter `autocompleteQuery` of this provider.
+  String get autocompleteQuery;
+}
+
+class _GetPlaceAutocompleteProviderElement
+    extends AutoDisposeFutureProviderElement<List<PlaceAutocomplete>>
+    with GetPlaceAutocompleteRef {
+  _GetPlaceAutocompleteProviderElement(super.provider);
+
+  @override
+  String get autocompleteQuery =>
+      (origin as GetPlaceAutocompleteProvider).autocompleteQuery;
 }
 
 String _$placeAutocompleteQueryHash() =>
@@ -150,4 +198,5 @@ final placeAutocompleteQueryProvider = AutoDisposeNotifierProvider<
 );
 
 typedef _$PlaceAutocompleteQuery = AutoDisposeNotifier<Option<String>>;
-// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

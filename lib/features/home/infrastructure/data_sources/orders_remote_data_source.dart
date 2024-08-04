@@ -67,4 +67,16 @@ class OrdersRemoteDataSource {
       data: params.toJson(),
     );
   }
+
+  Future<void> addNewOrder(OrderDto orderDto) async {
+    await firebaseFirestore.addDataToCollection(
+      path: ordersCollectionPath,
+      data: orderDto.toJson(),
+    );
+  }
+
+  Future<List<OrderDto>> getAllOrders() async {
+    final response = await firebaseFirestore.getCollectionData(path: ordersCollectionPath);
+    return OrderDto.parseListOfDocument(response.docs);
+  }
 }

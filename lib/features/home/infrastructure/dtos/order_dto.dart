@@ -6,11 +6,11 @@ import '../../domain/order.dart';
 import '../../domain/value_objects.dart';
 
 part 'order_dto.freezed.dart';
-
 part 'order_dto.g.dart';
 
-@Freezed(toJson: false)
+@Freezed(toJson: true)
 class OrderDto with _$OrderDto {
+  @JsonSerializable(explicitToJson: true)
   const factory OrderDto({
     required int date,
     required PickupOption pickupOption,
@@ -80,8 +80,9 @@ class OrderDto with _$OrderDto {
   }
 }
 
-@Freezed(toJson: false)
+@Freezed(toJson: true)
 class AddressDto with _$AddressDto {
+  @JsonSerializable(explicitToJson: true)
   const factory AddressDto({
     required String state,
     required String city,

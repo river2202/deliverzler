@@ -35,7 +35,7 @@ class MyApp extends HookConsumerWidget {
           ),
         );
       },
-      title: 'Deliverzler',
+      title: 'ColdFlow',
       debugShowCheckedModeBanner: false,
       color: Theme.of(context).colorScheme.primary,
       theme: themeMode.getThemeData(locale.fontFamily, supportsEdgeToEdge: supportsEdgeToEdge),

@@ -11,7 +11,10 @@ abstract class AppStaticColors {
   static const Color blue = Color(0xFF2196F3);
   static const Color lightBlue = Color(0xFF58b9f0);
   static const LinearGradient primaryIngredientColor = LinearGradient(
-    colors: [Color(0xFFd74747), Color(0xFFC11718)],
+    colors: [
+      Color(0xFF737FD7),
+      Color(0xFF5D67B4),
+    ],
     stops: [0, 1],
   );
 }

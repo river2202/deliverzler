@@ -9,6 +9,7 @@ const _riverpodEmoji = '🏞️ ';
 class ProviderLogger extends ProviderObserver {
   ProviderLogger() : _logger = Logger('Riverpod') {
     _logger.level = Level.FINER; //Turn off logging for messages whose level is under this level.
+    _logger.level = Level.OFF; //Turn off
     _logger.onRecord.listen(loggerOnDataCallback(prefix: _riverpodEmoji));
   }
 

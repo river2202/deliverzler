@@ -25,7 +25,7 @@ final targetLocationDirectionsProvider =
 typedef TargetLocationDirectionsRef
     = AutoDisposeProviderRef<Option<PlaceDirections>>;
 String _$getTargetLocationDirectionsHash() =>
-    r'bfaff014a1f1fcec57135fdf624edfc367cae2f4';
+    r'f85fc2db0fe1e9410d774a6ca6927870fa5ad541';
 
 /// See also [getTargetLocationDirections].
 @ProviderFor(getTargetLocationDirections)
@@ -42,4 +42,5 @@ final getTargetLocationDirectionsProvider =
 
 typedef GetTargetLocationDirectionsRef
     = AutoDisposeFutureProviderRef<PlaceDirections>;
-// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

@@ -21,7 +21,7 @@ Option<Marker> myLocationMarker(MyLocationMarkerRef ref) {
   );
   final myMarker = MapStyleHelper.getMyLocationMarker(
     position: cameraTarget,
-    rotation: myLocationHeading ?? 0,
+    rotation: 0,
     markerIcon: markerIcon,
   );
   return Some<Marker>(myMarker);

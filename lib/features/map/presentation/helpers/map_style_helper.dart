@@ -1,6 +1,7 @@
+import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../../gen/my_assets.dart';
@@ -14,7 +15,19 @@ abstract class MapStyleHelper {
     );
   }
 
+  static Future<Uint8List?> getBytesFromAsset(String path, int width) async {
+    ByteData data = await rootBundle.load(path);
+    ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(), targetWidth: width);
+    ui.FrameInfo fi = await codec.getNextFrame();
+    return (await fi.image.toByteData(format: ui.ImageByteFormat.png))?.buffer.asUint8List();
+  }
+
   static Future<BitmapDescriptor> getMyLocationMarkerIcon() async {
+    final markerIcon = await getBytesFromAsset(MyAssets.ASSETS_ICONS_DELIVERY_ICON_PNG, 200);
+    if (markerIcon != null) {
+      return BitmapDescriptor.fromBytes(markerIcon);
+    }
+
     return BitmapDescriptor.fromAssetImage(
       ImageConfiguration.empty,
       MyAssets.ASSETS_ICONS_DELIVERY_ICON_PNG,

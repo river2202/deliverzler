@@ -47,8 +47,6 @@ class _SystemHash {
   }
 }
 
-typedef UpdateDeliveryGeoPointRef = AutoDisposeFutureProviderRef<void>;
-
 /// See also [updateDeliveryGeoPoint].
 @ProviderFor(updateDeliveryGeoPoint)
 const updateDeliveryGeoPointProvider = UpdateDeliveryGeoPointFamily();
@@ -95,10 +93,10 @@ class UpdateDeliveryGeoPointFamily extends Family<AsyncValue<void>> {
 class UpdateDeliveryGeoPointProvider extends AutoDisposeFutureProvider<void> {
   /// See also [updateDeliveryGeoPoint].
   UpdateDeliveryGeoPointProvider(
-    this.deliveryGeoPoint,
-  ) : super.internal(
+    UpdateDeliveryGeoPoint deliveryGeoPoint,
+  ) : this._internal(
           (ref) => updateDeliveryGeoPoint(
-            ref,
+            ref as UpdateDeliveryGeoPointRef,
             deliveryGeoPoint,
           ),
           from: updateDeliveryGeoPointProvider,
@@ -110,9 +108,43 @@ class UpdateDeliveryGeoPointProvider extends AutoDisposeFutureProvider<void> {
           dependencies: UpdateDeliveryGeoPointFamily._dependencies,
           allTransitiveDependencies:
               UpdateDeliveryGeoPointFamily._allTransitiveDependencies,
+          deliveryGeoPoint: deliveryGeoPoint,
         );
 
+  UpdateDeliveryGeoPointProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.deliveryGeoPoint,
+  }) : super.internal();
+
   final UpdateDeliveryGeoPoint deliveryGeoPoint;
+
+  @override
+  Override overrideWith(
+    FutureOr<void> Function(UpdateDeliveryGeoPointRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: UpdateDeliveryGeoPointProvider._internal(
+        (ref) => create(ref as UpdateDeliveryGeoPointRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        deliveryGeoPoint: deliveryGeoPoint,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeFutureProviderElement<void> createElement() {
+    return _UpdateDeliveryGeoPointProviderElement(this);
+  }
 
   @override
   bool operator ==(Object other) {
@@ -128,4 +160,20 @@ class UpdateDeliveryGeoPointProvider extends AutoDisposeFutureProvider<void> {
     return _SystemHash.finish(hash);
   }
 }
-// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
+
+mixin UpdateDeliveryGeoPointRef on AutoDisposeFutureProviderRef<void> {
+  /// The parameter `deliveryGeoPoint` of this provider.
+  UpdateDeliveryGeoPoint get deliveryGeoPoint;
+}
+
+class _UpdateDeliveryGeoPointProviderElement
+    extends AutoDisposeFutureProviderElement<void>
+    with UpdateDeliveryGeoPointRef {
+  _UpdateDeliveryGeoPointProviderElement(super.provider);
+
+  @override
+  UpdateDeliveryGeoPoint get deliveryGeoPoint =>
+      (origin as UpdateDeliveryGeoPointProvider).deliveryGeoPoint;
+}
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

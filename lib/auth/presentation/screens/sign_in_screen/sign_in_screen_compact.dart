@@ -32,6 +32,9 @@ class SignInScreenCompact extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
+                    SizedBox(
+                      height: Sizes.marginV12 * 3,
+                    ),
                     Flexible(
                       child: LoginLogoComponent(),
                     ),

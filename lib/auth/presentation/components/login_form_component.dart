@@ -35,12 +35,16 @@ class LoginFormComponent extends HookConsumerWidget {
             key: const ValueKey('login_email'),
             controller: emailController,
             decoration: InputDecoration(
-              hintText: tr(context).email,
+              hintText: 'Driver ID',
               suffixIcon: Padding(
                 padding: EdgeInsetsDirectional.only(
-                  end: Theme.of(context).inputDecorationTheme.contentPadding!.horizontal / 2,
+                  end: Theme.of(context)
+                          .inputDecorationTheme
+                          .contentPadding!
+                          .horizontal /
+                      2,
                 ),
-                child: Icon(AppPlatformIcons.platformIcons(context).mail),
+                child: const Icon(Icons.fire_truck_rounded),
               ),
               suffixIconConstraints: const BoxConstraints(),
             ),
@@ -58,7 +62,11 @@ class LoginFormComponent extends HookConsumerWidget {
               hintText: tr(context).password,
               suffixIcon: Padding(
                 padding: EdgeInsetsDirectional.only(
-                  end: Theme.of(context).inputDecorationTheme.contentPadding!.horizontal / 2,
+                  end: Theme.of(context)
+                          .inputDecorationTheme
+                          .contentPadding!
+                          .horizontal /
+                      2,
                 ),
                 child: const Icon(Icons.password),
               ),
@@ -67,16 +75,18 @@ class LoginFormComponent extends HookConsumerWidget {
             validator: SignInWithEmail.validatePassword(context),
             textInputAction: TextInputAction.go,
             obscureText: true,
-            onFieldSubmitted: ref.isLoading(signInStateProvider) ? null : (_) => signIn(),
+            onFieldSubmitted:
+                ref.isLoading(signInStateProvider) ? null : (_) => signIn(),
           ),
           const SizedBox(
             height: Sizes.marginV40,
           ),
           CustomElevatedButton(
-            enableGradient: true,
+            // enableGradient: true,
+            buttonColor: const Color(0xFF737FD7),
             onPressed: ref.isLoading(signInStateProvider) ? null : signIn,
             child: Text(
-              tr(context).signIn.toUpperCase(),
+              'LOGIN',
               style: TextStyles.coloredElevatedButton(context),
             ),
           ),

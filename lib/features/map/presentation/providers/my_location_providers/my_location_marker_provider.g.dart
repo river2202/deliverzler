@@ -6,7 +6,7 @@ part of 'my_location_marker_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$myLocationMarkerHash() => r'8fdfae268d6b10f6b5d793eb20da5bbbc68958f9';
+String _$myLocationMarkerHash() => r'f8911633731bd507b09142ae5b5a19d87cbeae4c';
 
 /// See also [myLocationMarker].
 @ProviderFor(myLocationMarker)
@@ -39,4 +39,5 @@ final myLocationMarkerIconProvider =
 
 typedef MyLocationMarkerIconRef
     = AutoDisposeFutureProviderRef<BitmapDescriptor>;
-// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

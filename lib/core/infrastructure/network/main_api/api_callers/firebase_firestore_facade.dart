@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../../../../../features/home/infrastructure/dtos/order_dto.dart';
 import '../../../../presentation/utils/riverpod_framework.dart';
 import '../extensions/firebase_error_extension.dart';
 
@@ -169,4 +170,6 @@ class FirebaseFirestoreFacade {
       throw Error.throwWithStackTrace(error, st);
     });
   }
+
+  Future<void> addData(OrderDto orderDto) async {}
 }
